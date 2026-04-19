@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ecommerce
+  datasource:
+    url: jdbc:mysql://localhost:3306/Ecommerce?createDatabaseIfNotExist=true
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+springdoc:
+  swagger-ui:
+    path: /docs
+    enabled: true
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+
+  info:
+    title: E-commerce API
+    description: API do projeto de e-commerce
+    version: 1.0.0
+    contact:
+      name: Andrew Gabriel Ramos
+      email: andrew.grm15@gmail.com
+      url:
+
+
