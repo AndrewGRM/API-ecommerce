@@ -66,14 +66,14 @@
 
 ## 📡 Endpoints Principais (Produto)
 
-| Método | Endpoint                    | Descrição                          |
-|--------|-----------------------------|------------------------------------|
-| GET    | `/api/produtos`             | Listar todos os produtos (paginado)|
-| GET    | `/api/produtos/{id}`        | Buscar produto por ID              |
-| POST   | `/api/produtos`             | Criar novo produto                 |
-| PUT    | `/api/produtos/{id}`        | Atualizar produto                  |
-| DELETE | `/api/produtos/{id}`        | Deletar produto                    |
-| GET    | `/api/categorias`           | Listar categorias                  |
+| Método | Endpoint                    | Descrição                        | Status Code                                 |
+|--------|-----------------------------|----------------------------------|---------------------------------------------| 
+| GET    | `/api/produtos`             | Listar todos os produtos         | 200 (OK)                                    |
+| GET    | `/api/produtos/{id}`        | Buscar produto por ID            | 200 (OK), 404 (Not Found)                   |
+| POST   | `/api/produtos`             | Criar novo produto               | 201 (Created), 400 (Bad Request)            |
+| PUT    | `/api/produtos/{id}`        | Atualizar produto                | 200 (OK), 400 (Bad Request), 404(Not Found) |
+| DELETE | `/api/produtos/{id}`        | Deletar produto                  | 204 (No Content), 404 (Not Found)           |
+
 
 ## 📁 Estrutura do Projeto
 ```text
