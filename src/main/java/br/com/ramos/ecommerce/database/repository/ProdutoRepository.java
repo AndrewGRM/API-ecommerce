@@ -1,10 +1,10 @@
 package br.com.ramos.ecommerce.database.repository;
 
-import br.com.ramos.ecommerce.database.model.ProdutoEntity;
+import br.com.ramos.ecommerce.database.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProdutoRepository extends JpaRepository<ProdutoEntity, Long> {
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
 }
