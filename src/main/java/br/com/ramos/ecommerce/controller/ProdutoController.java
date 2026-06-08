@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ramos.ecommerce.database.model.ProdutoEntity;
+import br.com.ramos.ecommerce.database.model.Produto;
 import br.com.ramos.ecommerce.database.repository.ProdutoRepository;
-import br.com.ramos.ecommerce.dto.ProdutoDTO;
+import br.com.ramos.ecommerce.dto.ProdutoRequestDTO;
 import br.com.ramos.ecommerce.exception.ProdutoNotFoundException;
 import br.com.ramos.ecommerce.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -46,8 +46,8 @@ public class ProdutoController {
             @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor ")
     })
-    public ResponseEntity<List<ProdutoEntity>> ListarTodosProdutos() {
-        List<ProdutoEntity> TodosProdutos = produtoService.ListarProdutos();
+    public ResponseEntity<List<Produto>> ListarTodosProdutos() {
+        List<Produto> TodosProdutos = produtoService.ListarProdutos();
         return ResponseEntity.ok().body(TodosProdutos);
     }
 
@@ -63,7 +63,7 @@ public class ProdutoController {
             @ApiResponse(responseCode = "404", description = "Produto não encontrado com o Id informado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    public ProdutoEntity ListarProdutoPorId(
+    public Produto ListarProdutoPorId(
             @Parameter(description = "ID do produto a ser buscado", example = "1", required = true)
             @PathVariable Long id) {
         return produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));
@@ -84,8 +84,9 @@ public class ProdutoController {
     })
     public void CriarProduto(
             @Parameter(description = "Produto a ser criado", required = true)
-            @RequestBody ProdutoDTO produtoDTO) {
-        produtoService.save(produtoDTO);
+            @RequestBody ProdutoRequestDTO produtoDTO) {
+        ProdutoRequestDTO responseProduto = produtoDTO;
+        produtoService.criar_produto(responseProduto);
     }
 
     @PutMapping("/{id}")
@@ -102,10 +103,10 @@ public class ProdutoController {
             @ApiResponse(responseCode = "409", description = "Conflito ao atualizar o produto (ex: SKU ou Id duplicado)"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    public ProdutoEntity atualizarProduto(
+    public Produto atualizarProduto(
             @Parameter(description = "Id do produto a ser atualizado", example = "2", required = true)
             @PathVariable Long id,
-            @RequestBody ProdutoDTO produtoDTO) {
+            @RequestBody ProdutoRequestDTO produtoDTO) {
         return produtoService.atualizarProduto(id, produtoDTO);
     }
 

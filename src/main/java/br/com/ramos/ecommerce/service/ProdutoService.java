@@ -1,14 +1,13 @@
 package br.com.ramos.ecommerce.service;
 
-import br.com.ramos.ecommerce.database.model.ProdutoEntity;
+import br.com.ramos.ecommerce.database.model.Produto;
 import br.com.ramos.ecommerce.database.repository.ProdutoRepository;
-import br.com.ramos.ecommerce.dto.ProdutoDTO;
+import br.com.ramos.ecommerce.dto.ProdutoRequestDTO;
 import br.com.ramos.ecommerce.exception.ProdutoNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,8 +15,8 @@ public class ProdutoService {
 
     private final ProdutoRepository produtoRepository;
 
-    public void save(ProdutoDTO produtoDTO) {
-        produtoRepository.save(ProdutoEntity.builder()
+    public void criar_produto(ProdutoRequestDTO produtoDTO) {
+        produtoRepository.save(Produto.builder()
                         .nome(produtoDTO.getNome())
                         .descricao(produtoDTO.getDescricao())
                         .preco(produtoDTO.getPreco())
@@ -25,13 +24,13 @@ public class ProdutoService {
                 .build());
     }
 
-    public List<ProdutoEntity> ListarProdutos() {
-        List<ProdutoEntity> todosProdutos = produtoRepository.findAll();
+    public List<Produto> ListarProdutos() {
+        List<Produto> todosProdutos = produtoRepository.findAll();
         return todosProdutos;
     }
 
-    public ProdutoEntity atualizarProduto(Long id, ProdutoDTO produtoDTO) {
-            ProdutoEntity produtoExistente = produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));
+    public Produto atualizarProduto(Long id, ProdutoRequestDTO produtoDTO) {
+            Produto produtoExistente = produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException(id));
             produtoExistente.setNome(produtoDTO.getNome());
             produtoExistente.setDescricao(produtoDTO.getDescricao());
             produtoExistente.setPreco(produtoDTO.getPreco());
