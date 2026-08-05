@@ -50,7 +50,6 @@ public class UsuarioController {
         return ResponseEntity.ok().body(TodosUsuarios);
     }
 
-    @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(
             summary = "Busca usuário por ID.",
