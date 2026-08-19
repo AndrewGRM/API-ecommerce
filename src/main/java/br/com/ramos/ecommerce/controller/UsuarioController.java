@@ -1,7 +1,6 @@
 package br.com.ramos.ecommerce.controller;
 
 import br.com.ramos.ecommerce.database.model.Usuario;
-import br.com.ramos.ecommerce.database.repository.UsuarioRepository;
 import br.com.ramos.ecommerce.dto.UsuarioRequestDTO;
 import br.com.ramos.ecommerce.exception.UsuarioNotFoundException;
 import br.com.ramos.ecommerce.service.UsuarioService;
@@ -32,7 +31,6 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-    private final UsuarioRepository usuarioRepository;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -64,7 +62,7 @@ public class UsuarioController {
     public Usuario ListarUsuarioPorId(
             @Parameter(description = "Id do usuário a ser buscado", example = "1", required = true)
             @PathVariable Long id) {
-        return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+        return usuarioService.ListarUsuarioPorId(id).orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
     @PostMapping

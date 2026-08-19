@@ -3,12 +3,14 @@ package br.com.ramos.ecommerce.service;
 import br.com.ramos.ecommerce.database.model.Usuario;
 import br.com.ramos.ecommerce.database.repository.UsuarioRepository;
 import br.com.ramos.ecommerce.dto.UsuarioRequestDTO;
+import br.com.ramos.ecommerce.dto.UsuarioResponseDTO;
 import br.com.ramos.ecommerce.exception.UsuarioNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +30,11 @@ public class UsuarioService {
     public List<Usuario> ListarUsuarios() {
         List<Usuario> todosUsuarios = usuarioRepository.findAll();
         return todosUsuarios;
+    }
+    
+    public Optional<Usuario> ListarUsuarioPorId(Long id) {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        return usuario;
     }
 
     public Usuario atualizar_usuario(Long id, UsuarioRequestDTO usuarioRequestDTO) {
