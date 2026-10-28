@@ -92,6 +92,17 @@ src/main/resources/
 └── ...
 ```
 
+## 🗺️ Próximos Passos
+
+O projeto está em evolução contínua. As próximas funcionalidades planejadas são:
+
+- [ ] Cadastro de categorias e relacionamento com produtos
+- [ ] Carrinho de compras e criação de pedidos
+- [ ] Autenticação e autorização com Spring Security + JWT
+- [ ] Paginação, ordenação e filtros na listagem de produtos
+- [ ] Testes unitários e de integração (JUnit 5 e Mockito)
+- [ ] Ambiente com Docker Compose (API + MySQL)
+
 ## 🤝 Como Contribuir
 
     1. Faça um Fork
