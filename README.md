@@ -8,7 +8,7 @@
 
 **API REST completa para e-commerce** desenvolvida em **Java 21 + Spring Boot** com foco em aprendizado, boas práticas e arquitetura limpa.
 
-> Este projeto está em **desenvolvimento inicial** e serve como portfólio/prática técnica. O objetivo é evoluir para uma API robusta e pronta para produção.
+> Projeto concluído, desenvolvido como portfólio e prática técnica de arquitetura back-end com Spring Boot.
 
 ## ✨ Funcionalidades Atuais
 
@@ -91,17 +91,6 @@ src/main/resources/
 ├── application.yaml     # Configurações da aplicação
 └── ...
 ```
-
-## 🗺️ Próximos Passos
-
-O projeto está em evolução contínua. As próximas funcionalidades planejadas são:
-
-- [ ] Cadastro de categorias e relacionamento com produtos
-- [ ] Carrinho de compras e criação de pedidos
-- [ ] Autenticação e autorização com Spring Security + JWT
-- [ ] Paginação, ordenação e filtros na listagem de produtos
-- [ ] Testes unitários e de integração (JUnit 5 e Mockito)
-- [ ] Ambiente com Docker Compose (API + MySQL)
 
 ## 🤝 Como Contribuir
 
